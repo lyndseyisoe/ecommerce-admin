@@ -1,24 +1,13 @@
-export default function SearchBar({
-  search,
-  setSearch,
-}) {
-  return (
+export default function SearchBar({ search, setSearch }) {
+  console.log("Search bar working");
 
+  return (
     <input
       type="text"
       placeholder="Search products..."
       value={search}
-      onChange={(e) =>
-        setSearch(e.target.value)
-      }
-
-      className="
-      border
-      p-2
-      rounded
-      w-full
-      "
+      onChange={(e) => setSearch(e.target.value)}
+      className="border p-2 rounded w-full"
     />
-
   );
 }
