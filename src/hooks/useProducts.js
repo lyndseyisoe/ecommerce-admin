@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getProducts } from "../services/productService";
 
 export default function useProducts() {
@@ -13,5 +13,8 @@ export default function useProducts() {
     loadProducts();
   }, []);
 
-  return { products, setProducts, loadProducts };
+  return {
+    products,
+    loadProducts,
+  };
 }
