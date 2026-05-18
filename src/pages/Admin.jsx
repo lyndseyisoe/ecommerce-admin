@@ -16,20 +16,18 @@ export default function Admin() {
     image: "",
   });
 
-  // CREATE
   const handleSubmit = async (e) => {
     e.preventDefault();
     await createProduct(form);
+    setForm({ name: "", price: "", image: "" });
     loadProducts();
   };
 
-  // DELETE
   const handleDelete = async (id) => {
     await deleteProduct(id);
     loadProducts();
   };
 
-  // UPDATE (simple example)
   const handleUpdate = async (id) => {
     await updateProduct(id, { name: "Updated Item" });
     loadProducts();
@@ -39,25 +37,32 @@ export default function Admin() {
     <div>
       <h1>Admin Panel</h1>
 
-      {/* CREATE */}
       <form onSubmit={handleSubmit}>
         <input
           placeholder="Name"
-          onChange={(e) => setForm({ ...form, name: e.target.value })}
+          value={form.name}
+          onChange={(e) =>
+            setForm({ ...form, name: e.target.value })
+          }
         />
         <input
           placeholder="Price"
-          onChange={(e) => setForm({ ...form, price: e.target.value })}
+          value={form.price}
+          onChange={(e) =>
+            setForm({ ...form, price: e.target.value })
+          }
         />
         <input
           placeholder="Image URL"
-          onChange={(e) => setForm({ ...form, image: e.target.value })}
+          value={form.image}
+          onChange={(e) =>
+            setForm({ ...form, image: e.target.value })
+          }
         />
 
         <button type="submit">Add Product</button>
       </form>
 
-      {/* LIST */}
       {products.map((p) => (
         <div key={p.id}>
           <ProductCard product={p} onDelete={handleDelete} />
